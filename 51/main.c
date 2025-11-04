@@ -40,7 +40,7 @@ unsigned char play_sound_flag = 0;   // 播放提示音标志
 unsigned char NixieTable[]={0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F};
 
 //数码管显示子函数
-void display_digit(unsigned char Location,Number)
+void display_digit(unsigned char Location,int Number)
 {
 	switch(Location)		//位码输出
 	{
@@ -53,7 +53,8 @@ void display_digit(unsigned char Location,Number)
 		case 7:P2_4=0;P2_3=0;P2_2=1;break;
 		case 8:P2_4=0;P2_3=0;P2_2=0;break;
 	}
-      
+
+}
 
 void init_serial();
 void init_timer();

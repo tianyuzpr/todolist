@@ -28,15 +28,15 @@
     "title": "111",
     "completed": true,
     "duration": 1,
-    "is_timing": true,
+    "is_timing": false,
     "time_remaining": 1
   },
   {
     "id": 5,
     "title": "测试",
     "completed": true,
-    "duration": 1,
-    "is_timing": true,
-    "time_remaining": 1
+    "duration": 2,
+    "is_timing": false,
+    "time_remaining": 2
   }
 ]
