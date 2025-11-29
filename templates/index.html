@@ -44,24 +44,19 @@
             <div id="tasksContainer">
                 {% if tasks %}
                     <ul class="tasks-list">
+                        <!-- 修改任务项的计时器显示部分 -->
                         {% for task in tasks %}
-                            <li class="task-item {{ 'completed' if task.completed else '' }} {{ 'timing' if task.is_timing else '' }}">
-                                <input type="checkbox" class="task-checkbox" data-id="{{ task.id }}" {{ 'checked' if task.completed else '' }}>
-                                <span class="task-title" data-id="{{ task.id }}">{{ task.title }}</span>
-                                
-                                <!-- 计时控制 -->
-                                <div class="task-timer" data-id="{{ task.id }}">
-                                    <input type="number" class="duration-input" placeholder="分钟" value="{{ task.duration }}" data-id="{{ task.id }}">
-                                    <button class="start-timer-btn" data-id="{{ task.id }}">{{ '暂停' if task.is_timing else '开始' }}</button>
-                                    <span class="timer-display" data-id="{{ task.id }}">{{ task.time_remaining }}:00</span>
-                                </div>
-                                
-                                <!-- 任务管理图标 -->
-                                <div class="task-actions">
-                                    <button class="action-btn rename-btn" title="重命名" data-id="{{ task.id }}">✏️</button>
-                                    <button class="action-btn delete-btn" title="删除" data-id="{{ task.id }}">🗑️</button>
-                                </div>
-                            </li>
+                        <li class="task-item {{ 'completed' if task.completed else '' }} {{ 'timing' if task.is_timing else '' }}">
+                            <input type="checkbox" class="task-checkbox" data-id="{{ task.id }}" {{ 'checked' if task.completed else '' }}>
+                            <span class="task-title" data-id="{{ task.id }}">{{ task.title }}</span>
+                            <div class="task-controls">
+                                <input type="number" class="duration-input" data-id="{{ task.id }}" value="{{ task.duration }}" min="0">
+                                <span class="timer-display" data-id="{{ task.id }}">{{ "%d:%02d" % (task.time_remaining|int, (task.time_remaining % 1 * 60)|int) }}</span>
+                                <button class="start-timer-btn" data-id="{{ task.id }}">{{ '暂停' if task.is_timing else '开始' }}</button>
+                                <button class="rename-btn" data-id="{{ task.id }}">重命名</button>
+                                <button class="delete-btn" data-id="{{ task.id }}">删除</button>
+                            </div>
+                        </li>
                         {% endfor %}
                     </ul>
                 {% else %}

@@ -1,0 +1,6 @@
+flask
+openai
+pyserial
+python-dotenv
+requests
+pywin32
